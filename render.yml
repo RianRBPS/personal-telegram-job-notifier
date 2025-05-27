@@ -1,0 +1,15 @@
+services:
+  - type: worker
+    name: telegram-job-notifier
+    env: python
+    region: oregon
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    startCommand: python3 main.py
+    envVars:
+      - key: TELEGRAM_BOT_TOKEN
+        value: ${TELEGRAM_BOT_TOKEN}
+      - key: TELEGRAM_CHAT_ID
+        value: ${TELEGRAM_CHAT_ID}
+      - key: CRAGSLIST_SEARCH_URL
+        value: ${CRAGSLIST_SEARCH_URL}
